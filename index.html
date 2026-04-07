@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Honours Research: Statistical Evaluation of Deep Reinforcement Learning Approaches for HPC Job Scheduling">
+    <meta name="author" content="Justin M. Cheney">
+    <meta name="keywords" content="HPC, Deep Reinforcement Learning, Job Scheduling, Statistical Analysis, Honours Research">
+    
+    <title>HPC-DRL Scheduling | Honours Research 2026</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖥️</text></svg>">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="nav-icon">🖥️</span>
+                <span class="nav-title">HPC-DRL Scheduling</span>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#deliverables">Deliverables</a>
+                <a href="#team">Team</a>
+                <a href="https://github.com/JCheney20" target="_blank" class="nav-github">
+                    <img src="images/github-brands-solid-full.svg" alt="GitHub icon" style="width: 20px; height: 20px; filter: brightness(0) invert(1);">
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Intelligent Job Scheduling for HPC Systems</h1>
+                <h2 class="hero-subtitle">A Statistical Evaluation of Deep Reinforcement Learning Approaches</h2>
+                
+                <div class="hero-abstract">
+                    <p>
+                        Over the past three decades, supercomputers and their workloads have become increasingly complex. Scheduling systems have evolved from traditional heuristics to Deep Reinforcement Learning (DRL) approaches that adapt policies to specific workloads. Though there are several studies that develop various DRL models, no clear consensus exists on the optimal algorithm. This project trains and evaluates representative algorithms from three prominent DRL families: DQN, PPO, and A2C. Statistical testing (Friedman, Nemenyi, Critical Difference diagrams) determines whether significant performance differences exist across five industry-standard metrics.
+                    </p>
+                </div>
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <strong>Institution:</strong> University of the Western Cape
+                    </div>
+                    <div class="meta-item">
+                        <strong>Programme:</strong> BSc (Hons) Computer Science
+                    </div>
+                    <div class="meta-item">
+                        <strong>Year:</strong> 2026
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deliverables Section -->
+    <section id="deliverables" class="deliverables">
+        <div class="container">
+            <h2 class="section-title">Research Deliverables</h2>
+            <p class="section-subtitle">Papers, presentations, and recordings for each submission milestone</p>
+
+            <div class="deliverables-grid">
+                <!-- Submission 1 -->
+                <div class="deliverable-card">
+                    <div class="card-header">
+                        <h3>Submission 1</h3>
+                        <span class="card-badge available">Available</span>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-date">April 2026</p>
+                        <p class="card-description">
+                            Initial submission presenting problem statement, literature review findings, 
+                            proposed methodology, and current progress.
+                        </p>
+                        <div class="card-downloads">
+                            <a href="downloads/4323819_Submission1.pdf" class="download-btn" download>
+                                <img src="images/download-solid-full.svg" alt="Download icon" style="filter: brightness(0) invert(1);">
+                                Report (PDF)
+                            </a>
+                            <a href="downloads/4323819_Submission1_Presentation.pdf" class="download-btn" download>
+                                <img src="images/desktop-solid-full.svg" alt="Slides icon" style="filter: brightness(0) invert(1);">
+                                Slides (PDF)
+                            </a>
+                            <button class="download-btn" onclick="openVideoModal()" style="border: none; cursor: pointer;">
+                                <img src="images/film-solid-full.svg" alt="Video icon" style="filter: brightness(0) invert(1);">
+                                Recording (4 min)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submission 2 -->
+                <div class="deliverable-card">
+                    <div class="card-header">
+                        <h3>Submission 2</h3>
+                        <span class="card-badge upcoming">In Progress</span>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-date">Expected: May 2026</p>
+                        <p class="card-description">
+                            Progress update with DRL training infrastructure implementation, 
+                            initial training results, and preliminary statistical analysis.
+                        </p>
+                        <div class="card-downloads disabled">
+                            <span class="download-btn disabled">
+                                <img src="images/lock-solid-full.svg" alt="Lock icon">
+                                Report (PDF)
+                            </span>
+                            <span class="download-btn disabled">
+                                <img src="images/lock-solid-full.svg" alt="Lock icon">
+                                Slides (PDF)
+                            </span>
+                            <span class="download-btn disabled">
+                                <img src="images/lock-solid-full.svg" alt="Lock icon">
+                                Recording
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submission 3 -->
+                <div class="deliverable-card">
+                    <div class="card-header">
+                        <h3>Submission 3</h3>
+                        <span class="card-badge upcoming">To Be Added</span>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-date">Expected: June 2026</p>
+                        <p class="card-description">
+                            Complete statistical analysis results, Critical Difference diagrams, 
+                            and comprehensive evaluation of all DRL algorithms.
+                        </p>
+                        <div class="card-downloads disabled">
+                            <span class="download-btn disabled">
+                                <img src="images/lock-solid-full.svg" alt="Lock icon">
+                                Report (PDF)
+                            </span>
+                            <span class="download-btn disabled">
+                                <img src="images/lock-solid-full.svg" alt="Lock icon">
+                                Slides (PDF)
+                            </span>
+                            <span class="download-btn disabled">
+                                <img src="images/lock-solid-full.svg" alt="Lock icon">
+                                Recording
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Submission -->
+                <div class="deliverable-card">
+                    <div class="card-header">
+                        <h3>Final Submission</h3>
+                        <span class="card-badge upcoming">To Be Added</span>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-date">Expected: July 2026</p>
+                        <p class="card-description">
+                            Complete Honours paper with full results, discussion, conclusions, 
+                            and future work recommendations.
+                        </p>
+                        <div class="card-downloads disabled">
+                            <span class="download-btn disabled">
+                                <img src="images/lock-solid-full.svg" alt="Lock icon">
+                                Paper (PDF)
+                            </span>
+                            <span class="download-btn disabled">
+                                <img src="images/lock-solid-full.svg" alt="Lock icon">
+                                Slides (PDF)
+                            </span>
+                            <span class="download-btn disabled">
+                                <img src="images/lock-solid-full.svg" alt="Lock icon">
+                                Recording
+                            </span>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">The Team</h2>
+            <p class="section-subtitle">Researchers and supervisors contributing to this project</p>
+
+            <div class="team-grid">
+                <!-- Student -->
+                <div class="team-card">
+                    <div class="team-image-placeholder">
+                        <img src="images/user-graduate-solid-full.svg" alt="Graduate Icon">
+                    </div>
+                    <h3 class="team-name">Justin M. Cheney</h3>
+                    <p class="team-role">Honours Student</p>
+                    <p class="team-affiliation">BSc (Hons) Computer Science<br>University of the Western Cape</p>
+                    <div class="team-links">
+                        <a href="mailto:4323819@myuwc.ac.za" class="team-link">
+                            <img src="images/envelope-regular-full.svg" alt="Email icon" style="width: 16px; height: 16px;">
+                            Email
+                        </a>
+                        <a href="https://github.com/JCheney20" target="_blank" class="team-link">
+                            <img src="images/github-brands-solid-full.svg" alt="GitHub icon" style="width: 16px; height: 16px;">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Supervisor -->
+                <div class="team-card">
+                    <div class="team-image-placeholder">
+                        <img src="images/user-solid-full.svg" alt="Graduate Icon">
+                    </div>
+                    <h3 class="team-name">Prof. Clement Nyirenda</h3>
+                    <p class="team-role">Supervisor</p>
+                    <p class="team-affiliation">Department of Computer Science<br>University of the Western Cape</p>
+                    <div class="team-links">
+                        <a href="mailto:cnyirenda@uwc.ac.za" class="team-link">
+                            <img src="images/envelope-regular-full.svg" alt="Email icon" style="width: 16px; height: 16px;">
+                            Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal" onclick="closeVideoModal(event)">
+        <div class="video-modal-content">
+            <button class="video-modal-close" onclick="closeVideoModal(event)">&times;</button>
+            <video id="modalVideo" controls>
+                <source src="downloads/4323819_Submission1_Recording.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 Justin M. Cheney. All rights reserved.</p>
+                    <p class="footer-subtitle">University of the Western Cape | Honours Research Project</p>
+                </div>
+                <div class="footer-right">
+                    <a href="mailto:4323819@myuwc.ac.za" class="footer-link">
+                        <img src="images/envelope-regular-full.svg" alt="Email icon" style="width: 18px; height: 18px; filter: brightness(0) invert(1);">
+                        4323819@myuwc.ac.za
+                    </a>
+                    <a href="https://github.com/JCheney20" target="_blank" class="footer-link">
+                        <img src="images/github-brands-solid-full.svg" alt="GitHub icon" style="width: 18px; height: 18px; filter: brightness(0) invert(1);">
+                        JCheney20
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
