@@ -338,13 +338,16 @@ body {
 }
 
 .card-downloads {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  justify-content: center;   /* vertical centering in column */
+  align-items: stretch;      /* full-width buttons */
+  min-height: 180px;         /* adjust to match your tallest card */
 }
 
 .download-btn {
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 0.625rem;
@@ -355,6 +358,7 @@ body {
     border-radius: 6px;
     font-weight: 500;
     font-size: 0.875rem;
+    min-height: 40px;         /* adjust to match your tallest card */
     transition: background var(--transition-fast), transform var(--transition-fast);
 }
 
