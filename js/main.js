@@ -183,10 +183,18 @@ console.log('https://github.com/JCheney20');
 // VIDEO MODAL CONTROLS
 // ============================================
 
-function openVideoModal() {
-    const modal = document.getElementById('videoModal');
-    const video = document.getElementById('modalVideo');
+function openVideoModal(trigger) {
+    const modal = document.querySelector('#videoModal');
+    const video = document.querySelector('#modalVideo');
+    const video_btn = modal.querySelector('.video-download-btn');
+
+    const src = trigger.dataset.videoSrc;
+
+    video.src = src;
+    video_btn.href = src;
+
     modal.classList.add('active');
+    video.load();
     video.play();
     
     // Prevent body scroll when modal is open

@@ -95,9 +95,9 @@
                                 <img src="images/desktop-solid-full.svg" alt="Slides icon" style="filter: brightness(0) invert(1);">
                                 Slides (PDF)
                             </a>
-                            <button class="download-btn" onclick="openVideoModal()" style="border: none; cursor: pointer;">
+                            <button class="download-btn" onclick="openVideoModal(this)" style="border: none; cursor: pointer;" data-video-src="downloads/4323819_Submission1_Recording.mp4">
                                 <img src="images/film-solid-full.svg" alt="Video icon" style="filter: brightness(0) invert(1);">
-                                Recording (4 min)
+                                Recording (MP4)
                             </button>
                         </div>
                     </div>
@@ -107,10 +107,10 @@
                 <div class="deliverable-card">
                     <div class="card-header">
                         <h3>Submission 2</h3>
-                        <span class="card-badge upcoming">In Progress</span>
+                        <span class="card-badge available">Available</span>
                     </div>
                     <div class="card-content">
-                        <p class="card-date">Expected: May 2026</p>
+                        <p class="card-date">May 2026</p>
                         <p class="card-description">
                             Progress update with DRL training infrastructure implementation, 
                             initial training results, and preliminary statistical analysis.
@@ -124,10 +124,14 @@
                                 <img src="images/desktop-solid-full.svg" alt="Slides icon" style="filter: brightness(0) invert(1);">
                                 Slides (PDF)
                             </a>
-                            <span class="download-btn disabled">
-                                <img src="images/lock-solid-full.svg" alt="Lock icon">
-                                Recording
-                            </span>
+                            <button class="download-btn" onclick="openVideoModal(this)" style="border: none; cursor: pointer;" data-video-src="downloads/4323819_Submission2_Recording.mp4">
+                                <img src="images/film-solid-full.svg" alt="Video icon" style="filter: brightness(0) invert(1);">
+                                Recording (MP4)
+                            </button>
+                            <button class="download-btn" onclick="openVideoModal(this)" style="border: none; cursor: pointer;" data-video-src="downloads/4323819_Submission2_Demo.mp4">
+                                <img src="images/film-solid-full.svg" alt="Video icon" style="filter: brightness(0) invert(1);">
+                                Demo (MP4)
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -157,6 +161,10 @@
                                 <img src="images/lock-solid-full.svg" alt="Lock icon">
                                 Recording
                             </span>
+                            <span class="download-btn disabled">
+                                <img src="images/lock-solid-full.svg" alt="Lock icon">
+                                Demo
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -185,6 +193,10 @@
                             <span class="download-btn disabled">
                                 <img src="images/lock-solid-full.svg" alt="Lock icon">
                                 Recording
+                            </span>
+                            <span class="download-btn disabled">
+                                <img src="images/lock-solid-full.svg" alt="Lock icon">
+                                Final Demo
                             </span>
                         </div>
                 </div>
@@ -243,11 +255,11 @@
         <div class="video-modal-content">
             <button class="video-modal-close" onclick="closeVideoModal(event)">&times;</button>
             <video id="modalVideo" controls>
-                <source src="downloads/4323819_Submission1_Recording.mp4" type="video/mp4">
+                <source src="" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="video-modal-controls">
-                <a href="downloads/4323819_Submission1_Recording.mp4" class="video-download-btn" download>
+                <a href="" class="video-download-btn" download>
                     <img src="images/download-solid-full.svg" alt="Download icon">
                     Download
                 </a>
