@@ -1,0 +1,99 @@
+/* Hallmark · tokens · theme: Grid · genre: editorial
+ * paper-band: light · display-style: grotesk-heavy-lowercase · accent-hue: cool (ultramarine 264)
+ *
+ * Lifted from Presentation/symposium_web/src/deck.css so the site and the
+ * symposium deck resolve to the same values. The deck expresses every size in
+ * its own `--u` slide unit; a scrolling page can't, so the sizes below are the
+ * rem/clamp equivalents. Colour, type, easing and rule weights are identical.
+ */
+
+:root {
+  /* ---- paper + ink — cool near-white, never #fff ---- */
+  --color-paper:    oklch(99%   0.003 255);
+  --color-paper-2:  oklch(97.2% 0.003 255);
+  --color-paper-3:  oklch(94.5% 0.004 255);
+  --color-ink:      oklch(16%   0.010 255);
+  /* The deck sets muted at 52% L. That is comfortable at projected 15pt, but
+     this page uses the same grey for 11.5px tracked labels, where 52% measures
+     4.37:1 on paper — under AA. Darkened to clear 4.5:1 at small sizes; the
+     perceptual shift against the deck is negligible. */
+  --color-muted:    oklch(46%   0.014 255);
+  --color-rule:     oklch(88%   0.005 255);
+  --color-grid:     oklch(91%   0.006 255);
+  /* print falls back to true white — the cool near-white costs ink and buys
+     nothing on paper */
+  --color-print-paper: #fff;
+
+  /* ---- one signal ink — ultramarine (technical / institutional) ---- */
+  --color-signal:   oklch(45%   0.19  264);
+  --color-signal-2: oklch(45%   0.19  264 / 0.12);
+  --color-focus:    var(--color-signal);
+
+  /* ---- on-ink surfaces (nav scrim, footer, modal) ---- */
+  --color-on-ink:        var(--color-paper);
+  --color-on-ink-muted:  oklch(99% 0.003 255 / 0.76);
+  --color-on-ink-rule:   oklch(99% 0.003 255 / 0.32);
+  /* explicit alpha rather than a color-mix against `transparent`: mixing
+     toward transparent in oklch also drags lightness, so the scrim came out
+     far weaker than the 92% it named */
+  --color-scrim:         oklch(16% 0.010 255 / 0.93);
+
+  /* ---- status, coded by treatment rather than hue ----
+     The deck distinguishes marks by fill and stroke, not colour, so the coding
+     survives greyscale and screen-share compression. The site follows it: an
+     available deliverable is a solid signal square, a pending one is a dashed
+     muted outline. No second accent hue enters the system. */
+  --state-available: var(--color-signal);
+  --state-upcoming:  var(--color-muted);
+
+  /* ---- type ---- */
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body:    "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "DejaVu Sans Mono", monospace;
+  --display-weight: 800;
+  --tracking-display: -0.045em;
+  --tracking-label:   0.09em;
+
+  --text-display:   clamp(2.6rem, 7.4vw, 6rem);
+  --text-display-s: clamp(2rem, 5vw, 3.6rem);
+  --text-3xl:       clamp(1.9rem, 4.2vw, 3.1rem);
+  --text-2xl:       clamp(1.6rem, 3.2vw, 2.3rem);
+  --text-xl:        clamp(1.2rem, 2vw, 1.5rem);
+  --text-lg:        clamp(1.1rem, 1.5vw, 1.3rem);
+  --text-base:      1.0625rem;
+  --text-sm:        0.9375rem;
+  --text-xs:        0.8125rem;
+  --text-label:     0.72rem;
+
+  --measure:       62ch;
+  --measure-lede:  46ch;
+  --measure-title: 17ch;
+
+  /* ---- 4pt spacing scale ---- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs:  0.75rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2.5rem;
+  --space-xl:  4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 8.5rem;
+
+  /* ---- shell ---- */
+  --container: 76rem;
+  --gutter:    clamp(1.25rem, 4vw, 3.5rem);
+
+  /* ---- rules + radius — the deck has no rounded corners at all ---- */
+  --rule-hair: 1px;
+  --rule-bold: 2px;
+  --rule-mark: 3px;
+  --radius-card: 0;
+
+  /* ---- motion ---- */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in:     cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 140ms;
+  --dur-base: 260ms;
+}
