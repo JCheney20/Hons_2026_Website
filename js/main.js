@@ -2,6 +2,10 @@
 // HPC-DRL Scheduling — site interactions
 // ============================================
 
+// Scroll-reveal hides content until it enters the viewport, so the page must
+// only opt into that once scripting is confirmed to be running.
+document.documentElement.classList.add('js');
+
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ============================================
@@ -29,18 +33,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ============================================
-// NAVBAR SHADOW ON SCROLL
+// NAVBAR SCROLL STATE
+// The masthead already carries a 2px ink rule, so being stuck is signalled
+// with a class the stylesheet owns rather than an injected shadow.
 // ============================================
 
 const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-        navbar.style.boxShadow = '0 8px 30px rgba(3, 7, 18, 0.35)';
-    } else {
-        navbar.style.boxShadow = 'none';
-    }
-});
+    navbar.classList.toggle('is-stuck', window.scrollY > 40);
+}, { passive: true });
 
 // ============================================
 // SCROLL-REVEAL ANIMATIONS
@@ -106,30 +108,17 @@ document.querySelectorAll('.download-btn.disabled, .card-downloads.disabled .dow
         e.preventDefault();
 
         const tooltip = document.createElement('div');
-        tooltip.textContent = 'Coming soon!';
-        tooltip.style.cssText = `
-            position: fixed;
-            background: var(--surface-dark);
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            pointer-events: none;
-            z-index: 3000;
-            opacity: 0;
-            box-shadow: 0 8px 24px rgba(3, 7, 18, 0.35);
-            transition: opacity 0.3s ease;
-        `;
+        tooltip.className = 'tip';
+        tooltip.textContent = 'Coming soon';
         document.body.appendChild(tooltip);
 
         const rect = this.getBoundingClientRect();
         tooltip.style.left = `${rect.left + rect.width / 2 - tooltip.offsetWidth / 2}px`;
         tooltip.style.top = `${rect.top - tooltip.offsetHeight - 10}px`;
 
-        requestAnimationFrame(() => (tooltip.style.opacity = '1'));
+        requestAnimationFrame(() => tooltip.classList.add('is-shown'));
         setTimeout(() => {
-            tooltip.style.opacity = '0';
+            tooltip.classList.remove('is-shown');
             setTimeout(() => tooltip.remove(), 300);
         }, 1600);
     });
@@ -180,6 +169,6 @@ document.addEventListener('keydown', event => {
 // CONSOLE EASTER EGG
 // ============================================
 
-console.log('%cHPC-DRL Scheduling', 'font-size: 22px; font-weight: 800; color: #06b6d4;');
-console.log('%cHonours Research Project · 2026 · University of the Western Cape', 'font-size: 13px; color: #64748b;');
-console.log('%cInterested in the code? → https://github.com/JCheney20', 'font-size: 12px; color: #22c55e;');
+console.log('%cHPC-DRL Scheduling', 'font-size: 22px; font-weight: 800; color: #2739c4;');
+console.log('%cHonours Research Project · 2026 · University of the Western Cape', 'font-size: 13px; color: #6b7280;');
+console.log('%cInterested in the code? → https://github.com/JCheney20', 'font-size: 12px; color: #2739c4;');
