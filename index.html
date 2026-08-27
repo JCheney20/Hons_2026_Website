@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Honours Research: Statistical Evaluation of Deep Reinforcement Learning Approaches for HPC Job Scheduling">
+    <meta name="description" content="Honours Research: A Statistical Evaluation of Deep Reinforcement Learning Approaches for HPC Job Scheduling">
     <meta name="author" content="Justin M. Cheney">
     <meta name="keywords" content="HPC, Deep Reinforcement Learning, Job Scheduling, Statistical Analysis, Honours Research">
-    
+
     <title>HPC-DRL Scheduling | Honours Research 2026</title>
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖥️</text></svg>">
-    
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
@@ -32,7 +32,7 @@
                 <a href="#about">About</a>
                 <a href="#deliverables">Deliverables</a>
                 <a href="#team">Team</a>
-                <a href="https://github.com/JCheney20/DRL_HPC_Scheduling/" target="_blank" class="nav-github">
+                <a href="https://github.com/JCheney20/DRL_HPC_Scheduling/" target="_blank" rel="noopener" class="nav-github">
                     <img src="images/github-brands-solid-full.svg" alt="GitHub icon" style="width: 20px; height: 20px; filter: brightness(0) invert(1);">
                     GitHub
                 </a>
@@ -40,27 +40,43 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero / About Section -->
     <section id="about" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Intelligent Job Scheduling for HPC Systems</h1>
+                <span class="hero-badge">Honours Research Project · 2026</span>
+                <h1 class="hero-title">Intelligent Job Scheduling for <span class="accent">HPC Systems</span></h1>
                 <h2 class="hero-subtitle">A Statistical Evaluation of Deep Reinforcement Learning Approaches</h2>
-                
+
                 <div class="hero-abstract">
                     <p>
-                        Over the past three decades, supercomputers and their workloads have become increasingly complex. Scheduling systems have evolved from traditional heuristics to Deep Reinforcement Learning (DRL) approaches that adapt policies to specific workloads. Though there are several studies that develop various DRL models, no clear consensus exists on the optimal algorithm. This project trains and evaluates representative algorithms from three prominent DRL families: DQN, PPO, and A2C. Statistical testing (Friedman, Nemenyi, Wilcoxon-based confidence intervals) determines whether significant performance differences exist across five industry-standard metrics.
+                        Over the past three decades, supercomputers and their workloads have become increasingly complex. Scheduling systems have evolved from traditional heuristics to Deep Reinforcement Learning (DRL) approaches that adapt policies to specific workloads. Though several studies develop various DRL models, no clear consensus exists on the optimal algorithm. This project trains and evaluates representative algorithms from three prominent DRL families — DQN, PPO, and A2C — with and without action masking, on real heterogeneous Slurm traces. Statistical testing (Friedman, Nemenyi, Wilcoxon-based confidence intervals) determines whether significant performance differences exist across five industry-standard metrics.
                     </p>
                 </div>
+
                 <div class="hero-meta">
-                    <div class="meta-item">
-                        <strong>Institution:</strong> University of the Western Cape
+                    <div class="meta-item"><strong>Institution:</strong> University of the Western Cape</div>
+                    <div class="meta-item"><strong>Programme:</strong> BSc (Hons) Computer Science</div>
+                    <div class="meta-item"><strong>Year:</strong> 2026</div>
+                </div>
+
+                <!-- Animated stat strip -->
+                <div class="hero-stats reveal">
+                    <div class="stat">
+                        <span class="stat-value" data-count-target="6">0</span>
+                        <span class="stat-label">Algorithms</span>
                     </div>
-                    <div class="meta-item">
-                        <strong>Programme:</strong> BSc (Hons) Computer Science
+                    <div class="stat">
+                        <span class="stat-value" data-count-target="3">0</span>
+                        <span class="stat-label">DRL Families</span>
                     </div>
-                    <div class="meta-item">
-                        <strong>Year:</strong> 2026
+                    <div class="stat">
+                        <span class="stat-value" data-count-target="84" data-count-suffix="K">0</span>
+                        <span class="stat-label">Slurm Jobs</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" data-count-target="5">0</span>
+                        <span class="stat-label">Core Metrics</span>
                     </div>
                 </div>
             </div>
@@ -70,12 +86,13 @@
     <!-- Deliverables Section -->
     <section id="deliverables" class="deliverables">
         <div class="container">
+            <span class="section-eyebrow">Milestones</span>
             <h2 class="section-title">Research Deliverables</h2>
             <p class="section-subtitle">Papers, presentations, and recordings for each submission milestone</p>
 
             <div class="deliverables-grid">
                 <!-- Submission 1 -->
-                <div class="deliverable-card">
+                <div class="deliverable-card reveal">
                     <div class="card-header">
                         <h3>Submission 1</h3>
                         <span class="card-badge available">Available</span>
@@ -83,7 +100,7 @@
                     <div class="card-content">
                         <p class="card-date">April 2026</p>
                         <p class="card-description">
-                            Initial submission presenting problem statement, literature review findings, 
+                            Initial submission presenting problem statement, literature review findings,
                             proposed methodology, and current progress.
                         </p>
                         <div class="card-downloads">
@@ -95,7 +112,7 @@
                                 <img src="images/desktop-solid-full.svg" alt="Slides icon" style="filter: brightness(0) invert(1);">
                                 Slides (PDF)
                             </a>
-                            <button class="download-btn" onclick="openVideoModal(this)" style="border: none; cursor: pointer;" data-video-src="downloads/4323819_Submission1_Recording.mp4">
+                            <button class="download-btn" onclick="openVideoModal(this)" data-video-src="downloads/4323819_Submission1_Recording.mp4">
                                 <img src="images/film-solid-full.svg" alt="Video icon" style="filter: brightness(0) invert(1);">
                                 Recording (MP4)
                             </button>
@@ -104,7 +121,7 @@
                 </div>
 
                 <!-- Submission 2 -->
-                <div class="deliverable-card">
+                <div class="deliverable-card reveal">
                     <div class="card-header">
                         <h3>Submission 2</h3>
                         <span class="card-badge available">Available</span>
@@ -112,7 +129,7 @@
                     <div class="card-content">
                         <p class="card-date">May 2026</p>
                         <p class="card-description">
-                            Progress update with DRL training infrastructure implementation, 
+                            Progress update with DRL training infrastructure implementation,
                             initial training results, and preliminary statistical analysis.
                         </p>
                         <div class="card-downloads">
@@ -124,11 +141,11 @@
                                 <img src="images/desktop-solid-full.svg" alt="Slides icon" style="filter: brightness(0) invert(1);">
                                 Slides (PDF)
                             </a>
-                            <button class="download-btn" onclick="openVideoModal(this)" style="border: none; cursor: pointer;" data-video-src="downloads/4323819_Submission2_Recording.mp4">
+                            <button class="download-btn" onclick="openVideoModal(this)" data-video-src="downloads/4323819_Submission2_Recording.mp4">
                                 <img src="images/film-solid-full.svg" alt="Video icon" style="filter: brightness(0) invert(1);">
                                 Recording (MP4)
                             </button>
-                            <button class="download-btn" onclick="openVideoModal(this)" style="border: none; cursor: pointer;" data-video-src="downloads/4323819_Submission2_Demo.mp4">
+                            <button class="download-btn" onclick="openVideoModal(this)" data-video-src="downloads/4323819_Submission2_Demo.mp4">
                                 <img src="images/film-solid-full.svg" alt="Video icon" style="filter: brightness(0) invert(1);">
                                 Demo (MP4)
                             </button>
@@ -137,15 +154,15 @@
                 </div>
 
                 <!-- Submission 3 -->
-                <div class="deliverable-card">
+                <div class="deliverable-card reveal">
                     <div class="card-header">
                         <h3>Submission 3</h3>
                         <span class="card-badge upcoming">To Be Added</span>
                     </div>
                     <div class="card-content">
-                        <p class="card-date">Expected: June 2026</p>
+                        <p class="card-date">Expected 2026</p>
                         <p class="card-description">
-                            Complete statistical analysis results, Critical Difference diagrams, 
+                            Complete statistical analysis results, Critical Difference diagrams,
                             and comprehensive evaluation of all DRL algorithms.
                         </p>
                         <div class="card-downloads disabled">
@@ -170,15 +187,15 @@
                 </div>
 
                 <!-- Final Submission -->
-                <div class="deliverable-card">
+                <div class="deliverable-card reveal">
                     <div class="card-header">
                         <h3>Final Submission</h3>
                         <span class="card-badge upcoming">To Be Added</span>
                     </div>
                     <div class="card-content">
-                        <p class="card-date">Expected: July 2026</p>
+                        <p class="card-date">Expected 2026</p>
                         <p class="card-description">
-                            Complete Honours paper with full results, discussion, conclusions, 
+                            Complete Honours paper with full results, discussion, conclusions,
                             and future work recommendations.
                         </p>
                         <div class="card-downloads disabled">
@@ -199,6 +216,7 @@
                                 Final Demo
                             </span>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -207,12 +225,13 @@
     <!-- Team Section -->
     <section id="team" class="team">
         <div class="container">
+            <span class="section-eyebrow">People</span>
             <h2 class="section-title">The Team</h2>
             <p class="section-subtitle">Researchers and supervisors contributing to this project</p>
 
             <div class="team-grid">
                 <!-- Student -->
-                <div class="team-card">
+                <div class="team-card reveal">
                     <div class="team-image-placeholder">
                         <img src="images/user-graduate-solid-full.svg" alt="Graduate Icon">
                     </div>
@@ -224,7 +243,7 @@
                             <img src="images/envelope-regular-full.svg" alt="Email icon" style="width: 16px; height: 16px;">
                             Email
                         </a>
-                        <a href="https://github.com/JCheney20" target="_blank" class="team-link">
+                        <a href="https://github.com/JCheney20" target="_blank" rel="noopener" class="team-link">
                             <img src="images/github-brands-solid-full.svg" alt="GitHub icon" style="width: 16px; height: 16px;">
                             GitHub
                         </a>
@@ -232,9 +251,9 @@
                 </div>
 
                 <!-- Supervisor -->
-                <div class="team-card">
+                <div class="team-card reveal">
                     <div class="team-image-placeholder">
-                        <img src="images/user-solid-full.svg" alt="Graduate Icon">
+                        <img src="images/user-solid-full.svg" alt="Supervisor Icon">
                     </div>
                     <h3 class="team-name">Prof. Clement Nyirenda</h3>
                     <p class="team-role">Supervisor</p>
@@ -280,7 +299,7 @@
                         <img src="images/envelope-regular-full.svg" alt="Email icon" style="width: 18px; height: 18px; filter: brightness(0) invert(1);">
                         4323819@myuwc.ac.za
                     </a>
-                    <a href="https://github.com/JCheney20" target="_blank" class="footer-link">
+                    <a href="https://github.com/JCheney20" target="_blank" rel="noopener" class="footer-link">
                         <img src="images/github-brands-solid-full.svg" alt="GitHub icon" style="width: 18px; height: 18px; filter: brightness(0) invert(1);">
                         JCheney20
                     </a>
