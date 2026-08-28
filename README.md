@@ -37,15 +37,20 @@ Published in `Project_Website/downloads/`:
 
 - `4323819_Submission3.pdf` — mirrored from `Submmisions/4323819_Paper.pdf`
 
-Slides, recording, and demo are still to be uploaded.
+The slides, recording, and demo are still to be uploaded.
 
 **Final submission — September 2026**
 
 - `4323819_FinalPaper.pdf` — mirrored from `Submmisions/4323819_Paper.pdf`
+- `4323819_FinalPaper_Presentation.pdf` — mirrored from
+  `Presentation/symposium_web/Symposium_Deck.pdf`
 
-Slides, recording, and the usage wiki are still to be uploaded. Both Submission 3
-and the final submission currently mirror the same paper; replace either file in
-place when its final version is ready, and the page needs no edit.
+The recording and the demo are still to be uploaded. Submission 3 and the final
+submission mirror the same paper; replace either file in place when its final
+version is ready, and the page needs no edit.
+
+Submission 3 takes its own slide deck, focused on results and without the
+forward-looking material the symposium deck closes on.
 
 ## Structure
 
