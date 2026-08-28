@@ -1,12 +1,19 @@
 /* Hallmark · macrostructure: Long Document · tone: technical · anchor hue: ultramarine
  * theme: Grid · genre: editorial · nav: N6 masthead · footer: Ft1 hairline strip
  * paper-band: light · display-style: grotesk-heavy-lowercase · accent-hue: cool (ultramarine 264)
- * enrichment: none (typography only) · pre-emit critique: P5 H5 E5 S5 R5 V4
+ * enrichment: real result figures (CD diagrams, lifted from the paper — not redrawn)
+ * pre-emit critique: P5 H5 E5 S5 R5 V4
  *
  * Cohesion build: this stylesheet is the scrolling-page dialect of
  * Presentation/symposium_web/src/deck.css. Same tokens, same component voice —
  * hairline rules instead of cards, one signal ink, zero radius, zero shadow.
  * Diversification is deliberately suspended; matching the deck is the brief.
+ *
+ * 2026-08-28 — restructured around the finished paper. The page previously led
+ * with the project's topic and stopped at a deliverables list; it now leads with
+ * the finding and carries Findings / Results / Method before the milestones.
+ * Every figure on the page comes from Submmisions/data/results/*.csv or the
+ * paper itself. Nothing here is illustrative.
  */
 
 @import url("tokens.css");
@@ -237,10 +244,16 @@ strong { font-weight: 700; }
    tracked section label opposite, a 2px ink rule beneath.
    ============================================================ */
 .hero,
+.findings,
+.results,
+.method,
 .deliverables,
 .team { padding-block: var(--space-2xl); }
 
-.hero { padding-block: var(--space-2xl) var(--space-3xl); position: relative; }
+/* alternating paper bands keep the long scroll legible without adding a hue */
+.results { background: var(--color-paper-2); }
+
+.hero { padding-block: var(--space-2xl); position: relative; }
 
 .section-head {
   display: flex;
@@ -530,6 +543,17 @@ strong { font-weight: 700; }
 .card-badge.upcoming::before {
   background: transparent;
   border-style: dashed;
+}
+
+/* a third state between the two: solid signal outline, hollow centre — the
+   milestone is open and partly delivered. Still treatment-coded, so it
+   survives greyscale exactly as the other two do. */
+.card-badge.progress {
+  color: var(--color-signal);
+}
+.card-badge.progress::before {
+  background: transparent;
+  border: var(--rule-bold) solid var(--color-signal);
 }
 
 .card-content { display: flex; flex-direction: column; flex: 1; }
@@ -904,6 +928,421 @@ strong { font-weight: 700; }
 }
 
 .js .reveal.is-visible { opacity: 1; transform: none; }
+
+/* ============================================================
+   HERO ACTIONS — one filled primary, one typographic secondary
+   ============================================================ */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.btn-primary,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  white-space: nowrap;              /* never a two-line clickable */
+  text-decoration: none;
+  border-radius: var(--radius-card);
+  padding: 0.6rem var(--space-md);
+  transition: background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+
+.btn-primary {
+  color: var(--color-paper);
+  background: var(--color-signal);
+  border: var(--rule-bold) solid var(--color-signal);
+}
+
+.btn-primary .icon { width: 0.95rem; height: 0.95rem; filter: var(--icon-invert); }
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: color-mix(in oklch, var(--color-signal) 84%, black);
+  border-color: color-mix(in oklch, var(--color-signal) 84%, black);
+}
+
+.btn-primary:active { transform: translateY(1px); }
+
+.btn-ghost {
+  color: var(--color-ink);
+  background: transparent;
+  border: var(--rule-bold) solid var(--color-ink);
+}
+
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.btn-ghost:active { transform: translateY(1px); }
+
+/* ============================================================
+   FINDINGS — the three research questions.
+   Numbering is genuinely ordinal (RQ1–RQ3), and the index stacks
+   above its question rather than sitting in a left margin.
+   ============================================================ */
+.findings-list {
+  list-style: none;
+  margin: 0 0 var(--space-2xl);
+  padding: 0;
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.finding {
+  min-width: 0;
+  border-top: var(--rule-bold) solid var(--color-ink);
+  padding-top: var(--space-sm);
+}
+
+.finding-index {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-signal);
+  margin-bottom: var(--space-2xs);
+}
+
+/* set already-lowercase in the markup rather than transformed, so the
+   acronyms the questions turn on (PPO, DRL) keep their case */
+.finding-question {
+  font-size: var(--text-2xl);
+  max-width: var(--measure);
+  margin-bottom: var(--space-xs);
+}
+
+/* the answer is the payload — set at lede size, carrying the thread rule */
+.finding-answer {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-ink);
+  border-inline-start: var(--rule-mark) solid var(--color-signal);
+  padding-inline-start: var(--space-sm);
+  max-width: var(--measure-lede);
+  margin-bottom: var(--space-sm);
+}
+
+.finding > p:not(.finding-answer):not(.finding-evidence) {
+  color: var(--color-muted);
+  max-width: var(--measure);
+}
+
+/* the supporting numbers, set in mono against a hairline */
+.finding-evidence {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  max-width: var(--measure);
+  border-top: var(--rule-hair) solid var(--color-rule);
+  padding-top: var(--space-2xs);
+  margin-top: var(--space-sm);
+}
+
+/* ---- the study's headline claim, given its own weight ---- */
+.statement {
+  border-top: var(--rule-mark) solid var(--color-signal);
+  border-bottom: var(--rule-hair) solid var(--color-rule);
+  padding-block: var(--space-md);
+}
+
+.statement-label {
+  display: block;
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.statement-body {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-xl);
+  letter-spacing: var(--tracking-display);
+  line-height: 1.25;
+  max-width: 42ch;
+  margin-bottom: var(--space-sm);
+}
+
+.statement-note {
+  font-size: var(--text-base);
+  color: var(--color-muted);
+  max-width: var(--measure);
+}
+
+/* ============================================================
+   RESULTS
+   ============================================================ */
+.subsection-title {
+  font-size: var(--text-xl);
+  text-transform: lowercase;
+  border-bottom: var(--rule-hair) solid var(--color-rule);
+  padding-bottom: var(--space-2xs);
+  margin-bottom: var(--space-md);
+}
+
+/* ---- headroom: the one comparison that explains the split ---- */
+.headroom {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+@media (max-width: 640px) {
+  .headroom { grid-template-columns: minmax(0, 1fr); }
+}
+
+.headroom-cell {
+  min-width: 0;
+  border-top: var(--rule-bold) solid var(--color-ink);
+  padding-top: var(--space-sm);
+}
+
+.headroom-figure {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  font-size: var(--text-3xl);
+  letter-spacing: var(--tracking-display);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-signal);
+  margin-bottom: var(--space-3xs);
+}
+
+.headroom-trace {
+  display: block;
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.headroom-note {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  max-width: var(--measure);
+}
+
+/* ---- data table — wide content scrolls in its own box ---- */
+.table-scroll {
+  overflow-x: auto;
+  margin-bottom: var(--space-sm);
+  /* a hairline on the scroll box tells the reader the region is its own */
+  border-bottom: var(--rule-hair) solid var(--color-rule);
+}
+
+.data-table {
+  width: 100%;
+  min-width: 32rem;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+/* the caption sits outside .table-scroll — inside the table it inherits the
+   32rem min-width and gets clipped rather than wrapped on a narrow screen */
+.table-caption {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  max-width: var(--measure);
+  margin-bottom: var(--space-sm);
+}
+
+.data-table th,
+.data-table td {
+  text-align: left;
+  padding: var(--space-2xs) var(--space-sm) var(--space-2xs) 0;
+  border-bottom: var(--rule-hair) solid var(--color-rule);
+}
+
+.data-table thead th {
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-muted);
+  border-bottom: var(--rule-bold) solid var(--color-ink);
+  white-space: nowrap;
+}
+
+.data-table tbody th {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.data-table .num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.data-table thead .num { font-family: var(--font-body); }
+
+/* the winning treatment carries the signal; the control is the paper's point */
+.data-table .is-best th,
+.data-table .is-best td { color: var(--color-signal); font-weight: 700; }
+
+/* the heuristic block opens against a heavier rule */
+.data-table .is-rule th,
+.data-table .is-rule td { border-top: var(--rule-bold) solid var(--color-ink); }
+
+.data-table .is-control th,
+.data-table .is-control td {
+  font-weight: 700;
+  border-top: var(--rule-bold) solid var(--color-ink);
+}
+
+/* footnote marker — a link, so it must read as one */
+.fn {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-signal);
+  text-decoration: none;
+  vertical-align: super;
+  line-height: 1;
+}
+
+.fn:hover, .fn:focus-visible { text-decoration: underline; }
+
+.fn-mark {
+  font-weight: 700;
+  color: var(--color-signal);
+  margin-inline-end: var(--space-3xs);
+}
+
+.table-note {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  max-width: var(--measure);
+  margin-bottom: var(--space-2xl);
+}
+
+/* ---- figures — real result plots, hairline framed, nothing redrawn ---- */
+/* one figure per row. These plots are ~1700px wide at a 4:1 aspect, so a
+   two-up grid renders them at ~26% and the treatment labels along the axis
+   become unreadable. Full container width is the minimum legible size. */
+.fig-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-xl);
+  margin-bottom: var(--space-lg);
+}
+
+.fig {
+  min-width: 0;
+  margin: 0;
+  border-top: var(--rule-bold) solid var(--color-ink);
+  padding-top: var(--space-sm);
+}
+
+/* below ~34rem these plots are illegible rather than merely small, so the
+   figure gets its own pan region instead of scaling the labels into mush */
+.fig-media {
+  overflow-x: auto;
+  margin-bottom: var(--space-xs);
+}
+
+.fig img {
+  width: 100%;
+  min-width: 34rem;
+  background: var(--color-paper);
+  border: var(--rule-hair) solid var(--color-rule);
+}
+
+.fig figcaption {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  max-width: var(--measure);
+}
+
+.fig-label {
+  display: block;
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-ink);
+  margin-bottom: var(--space-3xs);
+}
+
+.results-close {
+  font-size: var(--text-lg);
+  color: var(--color-ink);
+  max-width: var(--measure);
+  border-top: var(--rule-mark) solid var(--color-signal);
+  padding-top: var(--space-sm);
+}
+
+/* ============================================================
+   METHOD — a spec list, label column against a hairline
+   ============================================================ */
+.spec { margin: 0; }
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: var(--space-md);
+  border-top: var(--rule-hair) solid var(--color-rule);
+  padding-block: var(--space-sm);
+}
+
+.spec-row:first-child { border-top: var(--rule-bold) solid var(--color-ink); }
+
+.spec dt {
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-muted);
+  min-width: 0;
+}
+
+.spec dd {
+  margin: 0;
+  min-width: 0;
+  color: var(--color-ink);
+  max-width: var(--measure);
+}
+
+@media (max-width: 720px) {
+  .spec-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-2xs);
+  }
+}
+
+/* ============================================================
+   ACKNOWLEDGEMENT
+   ============================================================ */
+.ack {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  max-width: var(--measure);
+  border-top: var(--rule-hair) solid var(--color-rule);
+  padding-top: var(--space-sm);
+  margin-top: var(--space-xl);
+}
 
 /* ============================================================
    FOCUS — visible, never animated

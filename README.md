@@ -8,15 +8,44 @@ Live site: `https://jcheney20.github.io/Hons_2026_Website/`
 
 - publish official deliverables per submission milestone;
 - provide stable public access to paper, slides, and recordings;
-- mirror approved outputs from this workspace.
+- mirror approved outputs from this workspace;
+- present the study's findings, results, and method for readers who arrive
+  without the paper.
+
+Figures and figures-in-prose on `index.html` are mirrored from
+`Submmisions/data/results/*.csv` and `Submmisions/figures/results/`. When those
+regenerate, re-check the Results section against them.
 
 ## Current Published Artefacts
 
-Submission 1 is published in `Project_Website/downloads/`:
+Published in `Project_Website/downloads/`:
+
+**Submission 1 — April 2026**
 
 - `4323819_Submission1.pdf`
 - `4323819_Submission1_Presentation.pdf`
 - `4323819_Submission1_Recording.mp4`
+
+**Submission 2 — May 2026**
+
+- `4323819_Submission2.pdf`
+- `4323819_Submission2_Presentation.pdf`
+- `4323819_Submission2_Recording.mp4`
+- `4323819_Submission2_Demo.mp4`
+
+**Submission 3 — August 2026**
+
+- `4323819_Submission3.pdf` — mirrored from `Submmisions/4323819_Paper.pdf`
+
+Slides, recording, and demo are still to be uploaded.
+
+**Final submission — September 2026**
+
+- `4323819_FinalPaper.pdf` — mirrored from `Submmisions/4323819_Paper.pdf`
+
+Slides, recording, and the usage wiki are still to be uploaded. Both Submission 3
+and the final submission currently mirror the same paper; replace either file in
+place when its final version is ready, and the page needs no edit.
 
 ## Structure
 
