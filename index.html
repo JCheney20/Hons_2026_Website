@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Honours Research: A Statistical Evaluation of Deep Reinforcement Learning Approaches for HPC Job Scheduling">
+    <meta name="description" content="Honours research comparing six Deep Reinforcement Learning treatments, three Slurm heuristics and a masked uniform-random control for HPC job scheduling, under a non-parametric statistical framework.">
     <meta name="author" content="Justin M. Cheney">
-    <meta name="keywords" content="HPC, Deep Reinforcement Learning, Job Scheduling, Statistical Analysis, Honours Research">
+    <meta name="keywords" content="HPC, Deep Reinforcement Learning, Job Scheduling, Action Masking, Statistical Analysis, Honours Research">
 
     <title>HPC-DRL Scheduling | Honours Research 2026</title>
 
@@ -29,7 +29,9 @@
                 <span class="nav-title">HPC-DRL Scheduling</span>
             </div>
             <div class="nav-links">
-                <a href="#about">About</a>
+                <a href="#findings">Findings</a>
+                <a href="#results">Results</a>
+                <a href="#method">Method</a>
                 <a href="#deliverables">Deliverables</a>
                 <a href="#team">Team</a>
                 <a href="https://github.com/JCheney20/DRL_HPC_Scheduling/" target="_blank" rel="noopener" class="nav-github">
@@ -40,50 +42,320 @@
         </div>
     </nav>
 
-    <!-- Hero / About Section -->
+    <!-- ============================================================
+         HERO — leads with the paper's finding, not the project's topic
+         ============================================================ -->
     <section id="about" class="hero">
         <div class="container">
             <div class="hero-content">
                 <span class="hero-badge">Honours Research Project · 2026</span>
-                <h1 class="hero-title">Intelligent Job Scheduling for <span class="accent">HPC Systems</span></h1>
-                <h2 class="hero-subtitle">A Statistical Evaluation of Deep Reinforcement Learning Approaches</h2>
+                <h1 class="hero-title">masking buys deployability, <span class="accent">not schedule quality</span></h1>
+                <h2 class="hero-subtitle">Deep Reinforcement Learning for HPC Job Scheduling: A Statistical Evaluation</h2>
 
                 <div class="hero-abstract">
                     <p>
-                        Over the past three decades, supercomputers and their workloads have become increasingly complex. Scheduling systems have evolved from traditional heuristics to Deep Reinforcement Learning (DRL) approaches that adapt policies to specific workloads. Though several studies develop various DRL models, no clear consensus exists on the optimal algorithm. This project trains and evaluates representative algorithms from three prominent DRL families — DQN, PPO, and A2C — with and without action masking, on real heterogeneous Slurm traces. Statistical testing (Friedman, Nemenyi, Wilcoxon-based confidence intervals) determines whether significant performance differences exist across five industry-standard metrics.
+                        Supercomputers and their workloads have grown steadily more heterogeneous, and job scheduling has moved from static heuristics to Deep Reinforcement Learning (DRL) policies, though no consensus exists on which algorithm suits the task. Comparisons to date benchmark DRL policies only against heuristics, leaving open a prior question: how much of the reported performance comes from the learned policy, and how much from the action masking that makes such policies runnable at all.
                     </p>
+                    <p>
+                        This paper compares six DRL treatments (PPO, A2C and DQN, each with and without action masking) against three Slurm heuristics and, critically, a seed-paired masked uniform-random control, across ten seeds on homogeneous and heterogeneous Slurm traces under a non-parametric, rank-based framework.
+                    </p>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="downloads/4323819_FinalPaper.pdf" class="btn-primary" download>
+                        <img class="icon" src="images/file-solid-full.svg" alt="">
+                        Read the paper (PDF)
+                    </a>
+                    <a href="#findings" class="btn-ghost">The findings</a>
                 </div>
 
                 <div class="hero-meta">
                     <div class="meta-item"><strong>Institution</strong> University of the Western Cape</div>
                     <div class="meta-item"><strong>Programme</strong> BSc (Hons) Computer Science</div>
+                    <div class="meta-item"><strong>Supervisor</strong> Prof. Clement Nyirenda</div>
                     <div class="meta-item"><strong>Year</strong> 2026</div>
                 </div>
 
-                <!-- Animated stat strip -->
+                <!-- Animated stat strip — every figure below is from the paper -->
                 <div class="hero-stats reveal">
                     <div class="stat">
-                        <span class="stat-value" data-count-target="6">0</span>
-                        <span class="stat-label">Algorithms</span>
+                        <span class="stat-value" data-count-target="10">10</span>
+                        <span class="stat-label">Treatments compared</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-value" data-count-target="3">0</span>
-                        <span class="stat-label">DRL Families</span>
+                        <span class="stat-value" data-count-target="120">120</span>
+                        <span class="stat-label">Evaluated DRL runs</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-value" data-count-target="84" data-count-suffix="K">0</span>
-                        <span class="stat-label">Slurm Jobs</span>
+                        <span class="stat-value" data-count-target="10">10</span>
+                        <span class="stat-label">Seeds per treatment</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-value" data-count-target="5">0</span>
-                        <span class="stat-label">Core Metrics</span>
+                        <span class="stat-value" data-count-target="153" data-count-suffix="K">153K</span>
+                        <span class="stat-label">Slurm jobs replayed</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Deliverables Section -->
+    <!-- ============================================================
+         FINDINGS — the three research questions and their answers
+         ============================================================ -->
+    <section id="findings" class="findings">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="section-title">Findings</h2>
+                <span class="section-eyebrow">Research questions</span>
+            </div>
+            <p class="section-subtitle">Three questions the study set out to answer, and what the data supports.</p>
+
+            <ol class="findings-list">
+                <li class="finding reveal">
+                    <span class="finding-index">RQ1</span>
+                    <h3 class="finding-question">what does action masking contribute?</h3>
+                    <p class="finding-answer">Deployability, not schedule quality.</p>
+                    <p>
+                        No unmasked policy terminated an evaluation episode on either trace. Without a mask the
+                        policy can select an action naming no allocatable job, the simulator freezes on an identical
+                        state, and a hang guard stops the run. Masking removes that failure mode, but it does not
+                        remove divergence: MaskableDQN still averaged 4,474&nbsp;&plusmn;&nbsp;1,684&nbsp;s of waiting
+                        on the physical trace, with a maximum slowdown above 190,000.
+                    </p>
+                    <p class="finding-evidence">0 of 6 unmasked runs completed an episode · masking removes one failure mode, not all of them</p>
+                </li>
+
+                <li class="finding reveal">
+                    <span class="finding-index">RQ2</span>
+                    <h3 class="finding-question">is the field's concentration on PPO justified?</h3>
+                    <p class="finding-answer">Not on schedule quality.</p>
+                    <p>
+                        A PPO-family treatment topped both traces but separated from the other leading treatments on
+                        neither, so no claim of better schedule quality is supported. Cost is the axis where the
+                        family does hold an advantage &mdash; both PPO treatments trained 9&ndash;22% faster than the
+                        A2C variants &mdash; but that follows from an eightyfold lower gradient-update count under
+                        inherited defaults, which is a budget artefact rather than algorithmic efficiency.
+                    </p>
+                    <p class="finding-evidence">Nemenyi critical difference = 2.39 rank units (n = 10, k = 6) · no treatment separates</p>
+                </li>
+
+                <li class="finding reveal">
+                    <span class="finding-index">RQ3</span>
+                    <h3 class="finding-question">when is a DRL scheduler worth its inference cost?</h3>
+                    <p class="finding-answer">On heterogeneous workloads, and only for tail fairness.</p>
+                    <p>
+                        On the homogeneous trace the agents could not beat a uniform draw over the same valid actions,
+                        and the heuristics win outright. On the heterogeneous trace MaskablePPO holds parity with the
+                        heuristics on average waiting and improves maximum slowdown by up to 22% &mdash; it does not
+                        schedule the average job better, it handles the awkward ones better. That came at
+                        13&ndash;34&times; the evaluation cost of the fastest heuristic.
+                    </p>
+                    <p class="finding-evidence">Parity on the average job · &minus;22.0% on max slowdown vs. LCFS · 13&ndash;34&times; slower to run</p>
+                </li>
+            </ol>
+
+            <!-- the study's strongest claim gets its own treatment -->
+            <div class="statement reveal">
+                <span class="statement-label">The strongest claim is methodological</span>
+                <p class="statement-body">
+                    A masked random control, paired by seed, is inexpensive and decisive. Without it, the parity the
+                    masked treatments reach with production heuristics on the physical trace would have been reported
+                    as a success<span class="dot"></span>
+                </p>
+                <p class="statement-note">It is recommended as a required baseline for this literature.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         RESULTS
+         ============================================================ -->
+    <section id="results" class="results">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="section-title">Results</h2>
+                <span class="section-eyebrow">Two traces</span>
+            </div>
+            <p class="section-subtitle">
+                What separates the two workloads is headroom &mdash; the gap between the best heuristic and the
+                random control. It is where a learned policy has room to show a benefit.
+            </p>
+
+            <!-- headroom: the single comparison that explains the split -->
+            <div class="headroom">
+                <div class="headroom-cell reveal">
+                    <span class="headroom-figure">3.7%</span>
+                    <span class="headroom-trace">Physical · homogeneous</span>
+                    <p class="headroom-note">
+                        Best heuristic LCFS at 2,090&nbsp;s against the random control at 2,166&nbsp;s. Almost no room
+                        to optimise, and no DRL treatment beat the control.
+                    </p>
+                </div>
+                <div class="headroom-cell reveal">
+                    <span class="headroom-figure">38.3%</span>
+                    <span class="headroom-trace">Deeplearn · heterogeneous</span>
+                    <p class="headroom-note">
+                        Best heuristic UNICEP at 846&nbsp;s against the random control at 1,170&nbsp;s. Roughly ten
+                        times more room, and MaskablePPO beat the control on every primary metric.
+                    </p>
+                </div>
+            </div>
+
+            <!-- cross-trace comparison, dev split -->
+            <h3 class="subsection-title">Average waiting time by treatment</h3>
+            <div class="table-scroll">
+                <table class="data-table" aria-describedby="cap-waiting">
+                    <thead>
+                        <tr>
+                            <th scope="col">Treatment</th>
+                            <th scope="col" class="num">Physical (s)</th>
+                            <th scope="col" class="num">Deeplearn (s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="is-best">
+                            <th scope="row">MaskablePPO</th>
+                            <td class="num">2,243 &plusmn; 41</td>
+                            <td class="num">846 &plusmn; 9</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">MaskableA2C</th>
+                            <td class="num">2,223 &plusmn; 42</td>
+                            <td class="num">diverged <a href="#note-a2c" class="fn">a</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">MaskableDQN</th>
+                            <td class="num">4,474 &plusmn; 1,684</td>
+                            <td class="num">45,729 &plusmn; 40,335</td>
+                        </tr>
+                        <tr class="is-rule">
+                            <th scope="row">SJF</th>
+                            <td class="num">2,176</td>
+                            <td class="num">851</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">LCFS</th>
+                            <td class="num">2,090</td>
+                            <td class="num">912</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">UNICEP</th>
+                            <td class="num">2,499</td>
+                            <td class="num">846</td>
+                        </tr>
+                        <tr class="is-control">
+                            <th scope="row">Random (masked)</th>
+                            <td class="num">2,166 &plusmn; 76</td>
+                            <td class="num">1,170 &plusmn; 26</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-caption" id="cap-waiting">
+                Mean average waiting time in seconds (&plusmn; standard deviation across ten seeds), dev split,
+                heuristics run without backfill. Lower is better.
+            </p>
+            <p class="table-note" id="note-a2c">
+                <span class="fn-mark">a</span> MaskableA2C diverged on 2 of 10 seeds on the heterogeneous trace, which
+                puts its mean at 24,520,863&nbsp;s. On the median it reaches 837&nbsp;s and outperforms MaskablePPO
+                &mdash; capable of the better result, but not reliably. The three unmasked treatments are omitted:
+                none completed an evaluation episode, so their figures are truncation-biased.
+            </p>
+
+            <!-- real figures from the paper, not redrawn -->
+            <h3 class="subsection-title">Critical difference diagrams</h3>
+            <div class="fig-grid">
+                <figure class="fig reveal">
+                    <div class="fig-media">
+                    <img src="images/cd-physical-avg-waiting.png"
+                         alt="Critical difference diagram for average waiting time on the physical trace. MaskablePPO and MaskableA2C hold the top two mean ranks and are joined by a bar indicating no significant difference between them.">
+                    </div>
+                    <figcaption>
+                        <span class="fig-label">Physical trace</span>
+                        MaskablePPO (1.7) and MaskableA2C (1.9) take the top two mean ranks, joined by a
+                        crossbar &mdash; Nemenyi returns p = 1.000 between them, so they cannot be ordered at n = 10.
+                    </figcaption>
+                </figure>
+                <figure class="fig reveal">
+                    <div class="fig-media">
+                    <img src="images/cd-deeplearn-avg-waiting.png"
+                         alt="Critical difference diagram for average waiting time on the deeplearn trace, showing the treatments' mean ranks and the groups that are not significantly different.">
+                    </div>
+                    <figcaption>
+                        <span class="fig-label">Deeplearn trace</span>
+                        MaskablePPO is the best-ranked treatment that completes an evaluation episode. No other
+                        treatment separates from it at n = 10.
+                    </figcaption>
+                </figure>
+            </div>
+
+            <p class="results-close">
+                MaskablePPO is the best-ranked treatment that completes an evaluation episode on both traces. The
+                differences between algorithms, however, are not significant in this data.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         METHOD
+         ============================================================ -->
+    <section id="method" class="method">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="section-title">Method</h2>
+                <span class="section-eyebrow">How it was run</span>
+            </div>
+            <p class="section-subtitle">
+                Ten treatments, two real Slurm traces, ten fixed seeds, and a rank-based framework chosen because
+                normality does not hold at n = 10.
+            </p>
+
+            <dl class="spec">
+                <div class="spec-row">
+                    <dt>Treatments</dt>
+                    <dd>
+                        Six DRL algorithms &mdash; PPO, A2C and DQN, each with and without action masking &mdash; from
+                        stable-baselines3 and sb3-contrib, with custom MaskableA2C and MaskableDQN. Three Slurm
+                        heuristics (SJF, LCFS, UNICEP). One seed-paired masked uniform-random control.
+                    </dd>
+                </div>
+                <div class="spec-row">
+                    <dt>Environment</dt>
+                    <dd>
+                        HPCSim, a Gymnasium scheduling environment. The best_fit allocator and backfill are fixed as
+                        controlled factors, so comparisons reflect scheduling policy rather than allocation strategy.
+                    </dd>
+                </div>
+                <div class="spec-row">
+                    <dt>Traces</dt>
+                    <dd>
+                        Physical, homogeneous: 84,135 jobs over 37 days. Deeplearn, heterogeneous: 68,720 jobs over
+                        382 days. Both split 70/30 by submission time, so the holdout is never seen during training.
+                    </dd>
+                </div>
+                <div class="spec-row">
+                    <dt>Statistics</dt>
+                    <dd>
+                        Friedman omnibus per metric per trace with Kendall's W reported alongside every p-value,
+                        Nemenyi post-hoc with critical difference plots, Wilcoxon confidence intervals for effect
+                        size, TOST equivalence against a &plusmn;10% margin, Holm correction within each comparison family.
+                    </dd>
+                </div>
+                <div class="spec-row">
+                    <dt>Reproducibility</dt>
+                    <dd>
+                        A Nix flake pinned to nixos-25.05 makes every dependency content-addressed, Apptainer
+                        containerises the environment for cluster execution, and Snakemake 9.4.3 orchestrates the
+                        pipeline. Commit hashes and sha256 manifest fingerprints are written into all output metadata.
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         DELIVERABLES
+         ============================================================ -->
     <section id="deliverables" class="deliverables">
         <div class="container">
             <div class="section-head">
@@ -159,19 +431,19 @@
                 <div class="deliverable-card reveal">
                     <div class="card-header">
                         <h3>Submission 3</h3>
-                        <span class="card-badge upcoming">To Be Added</span>
+                        <span class="card-badge available">Available</span>
                     </div>
                     <div class="card-content">
-                        <p class="card-date">Expected 2026</p>
+                        <p class="card-date">August 2026</p>
                         <p class="card-description">
-                            Complete statistical analysis results, Critical Difference diagrams,
-                            and comprehensive evaluation of all DRL algorithms.
+                            Results and the full paper: the complete statistical analysis, critical difference
+                            diagrams, and the evaluation of all ten treatments across both traces.
                         </p>
-                        <div class="card-downloads disabled">
-                            <span class="download-btn disabled">
-                                <img class="icon" src="images/lock-solid-full.svg" alt="">
-                                Report (PDF)
-                            </span>
+                        <div class="card-downloads">
+                            <a href="downloads/4323819_Submission3.pdf" class="download-btn" download>
+                                <img class="icon" src="images/file-solid-full.svg" alt="">
+                                Paper (PDF)
+                            </a>
                             <span class="download-btn disabled">
                                 <img class="icon" src="images/lock-solid-full.svg" alt="">
                                 Slides (PDF)
@@ -192,19 +464,19 @@
                 <div class="deliverable-card reveal">
                     <div class="card-header">
                         <h3>Final Submission</h3>
-                        <span class="card-badge upcoming">To Be Added</span>
+                        <span class="card-badge progress">In progress</span>
                     </div>
                     <div class="card-content">
-                        <p class="card-date">Expected 2026</p>
+                        <p class="card-date">September 2026</p>
                         <p class="card-description">
-                            Complete Honours paper with full results, discussion, conclusions,
-                            and future work recommendations.
+                            The final paper, alongside a cleaned-up project repository and a wiki covering how to run
+                            the pipeline end to end.
                         </p>
-                        <div class="card-downloads disabled">
-                            <span class="download-btn disabled">
-                                <img class="icon" src="images/lock-solid-full.svg" alt="">
+                        <div class="card-downloads">
+                            <a href="downloads/4323819_FinalPaper.pdf" class="download-btn" download>
+                                <img class="icon" src="images/file-solid-full.svg" alt="">
                                 Paper (PDF)
-                            </span>
+                            </a>
                             <span class="download-btn disabled">
                                 <img class="icon" src="images/lock-solid-full.svg" alt="">
                                 Slides (PDF)
@@ -215,7 +487,7 @@
                             </span>
                             <span class="download-btn disabled">
                                 <img class="icon" src="images/lock-solid-full.svg" alt="">
-                                Final Demo
+                                Wiki
                             </span>
                         </div>
                     </div>
@@ -224,7 +496,9 @@
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- ============================================================
+         TEAM
+         ============================================================ -->
     <section id="team" class="team">
         <div class="container">
             <div class="section-head">
@@ -270,6 +544,11 @@
                     </div>
                 </div>
             </div>
+
+            <p class="ack">
+                Computations were performed using the University of the Western Cape's High Performance Computing and
+                Research Cloud facilities.
+            </p>
         </div>
     </section>
 
