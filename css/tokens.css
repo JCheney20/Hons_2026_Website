@@ -29,6 +29,20 @@
   --color-signal-2: oklch(45%   0.19  264 / 0.12);
   --color-focus:    var(--color-signal);
 
+  /* ---- series palette — the paper's semantics ----
+     Declared in Submmisions/IEEE-ACM/scripts/make_result_figures.py and shared
+     with the decks, so a colour means the same thing in the paper, a deck and
+     this page. Two blues on purpose: --color-signal is interface chrome,
+     --color-series-drl is data. They sit at hue 264 and 265 in OKLCH so they
+     read as one family, but only the darker carries contrast for small text.
+     Contrast on --color-paper: drl 4.84:1 (AA at body size); base 2.80:1 and
+     rand 3.36:1 are fill only, never text; accent 3.63:1 is large text and
+     marks only, never a caption. */
+  --color-series-drl:    #4C72B0;   /* DRL treatments */
+  --color-series-base:   #DD8452;   /* heuristic baselines */
+  --color-series-rand:   #8C8C8C;   /* masked random control */
+  --color-series-accent: #D2691E;   /* significance marks */
+
   /* ---- on-ink surfaces (nav scrim, footer, modal) ---- */
   --color-on-ink:        var(--color-paper);
   --color-on-ink-muted:  oklch(99% 0.003 255 / 0.76);
