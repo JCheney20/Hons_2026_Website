@@ -39,8 +39,8 @@ Published in `Project_Website/downloads/`:
 
 - `4323819_Submission3.pdf` — mirrored from `Submmisions/IEEE-ACM/4323819_Paper.pdf`
 - `4323819_Submission3_Presentation.pdf` — built from `Presentation/sub3_web/`
-
-Recording and demo are still to be uploaded.
+- `4323819_Submission3_Recording.mp4`
+- `4323819_Submission3_Demo.mp4`
 
 **Final submission — September 2026**
 
