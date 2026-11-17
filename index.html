@@ -213,31 +213,31 @@
                 <div class="deliverable-card reveal">
                     <div class="card-header">
                         <h3>Final Submission</h3>
-                        <span class="card-badge progress">In progress</span>
+                        <span class="card-badge available">Available</span>
                     </div>
                     <div class="card-content">
-                        <p class="card-date">September 2026</p>
+                        <p class="card-date">November 2026</p>
                         <p class="card-description">
-                            The final paper, alongside a cleaned-up project repository and a wiki covering how to run
-                            the pipeline end to end.
+                            The expanded paper, presentation slides, and final recording with a separate workflow demo.
+                            When the recording prompts you, pause to watch the demo, then return for the results.
                         </p>
                         <div class="card-downloads">
                             <a href="downloads/4323819_FinalPaper.pdf" class="download-btn" download>
                                 <img class="icon" src="images/file-solid-full.svg" alt="">
                                 Paper (PDF)
                             </a>
-                            <span class="download-btn disabled">
-                                <img class="icon" src="images/lock-solid-full.svg" alt="">
+                            <a href="downloads/4323819_FinalPresentation.pdf" class="download-btn" download>
+                                <img class="icon" src="images/desktop-solid-full.svg" alt="">
                                 Slides (PDF)
-                            </span>
-                            <span class="download-btn disabled">
-                                <img class="icon" src="images/lock-solid-full.svg" alt="">
-                                Recording
-                            </span>
-                            <span class="download-btn disabled">
-                                <img class="icon" src="images/lock-solid-full.svg" alt="">
-                                Demo
-                            </span>
+                            </a>
+                            <button class="download-btn" onclick="openVideoModal(this)" data-video-src="downloads/4323819_FinalRecording.mp4">
+                                <img class="icon" src="images/film-solid-full.svg" alt="">
+                                Recording (MP4)
+                            </button>
+                            <button class="download-btn" onclick="openVideoModal(this)" data-video-src="downloads/4323819_FinalDemo.mp4">
+                                <img class="icon" src="images/film-solid-full.svg" alt="">
+                                Demo (MP4)
+                            </button>
                         </div>
                     </div>
                 </div>

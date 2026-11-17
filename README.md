@@ -42,13 +42,33 @@ Published in `Project_Website/downloads/`:
 - `4323819_Submission3_Recording.mp4`
 - `4323819_Submission3_Demo.mp4`
 
-**Final submission — September 2026**
+**Final submission — November 2026**
 
-- `4323819_FinalPaper.pdf` — mirrored from `Submmisions/4323819_Paper.pdf`
+- `4323819_FinalPaper.pdf` — current expanded Paper 1 manuscript.
+- `4323819_FinalPresentation.pdf` — eleven-page static slide PDF with all points revealed.
+- `4323819_FinalRecording.mp4` — main recording, 4:59.883, including the demo handoff card.
+- `4323819_FinalDemo.mp4` — separate workflow walkthrough, 3:28.
 
-Slides, recording, and the usage wiki are still to be uploaded. Both Submission 3
-and the final submission currently mirror the same paper; replace either file in
-place when its final version is ready, and the page needs no edit.
+Pause the main recording at its handoff, watch the demo, then return to the main
+recording for the results. Videos use the existing modal/player and download link.
+The rehearsed script revisions are not a new recording; these are the approved
+files packaged for Submission 4. Historical submissions remain unchanged.
+
+### Final-submission mirrors
+
+Source paths below are relative to `01-paper-1/` in the research workspace:
+
+| Public file in `downloads/` | Authoring/export source |
+|---|---|
+| `4323819_FinalPaper.pdf` | `manuscript/submissions/IEEE-ACM/drl-hpc-scheduling.pdf` |
+| `4323819_FinalPresentation.pdf` | `presentation/honours/sub4_web/Submission4_Deck.pdf` |
+| `4323819_FinalRecording.mp4` | `presentation/honours/recordings/sub4/Submission4_Presentation_1.15x.mp4` |
+| `4323819_FinalDemo.mp4` | `presentation/honours/recordings/sub4/Submission4_Demo.mp4` |
+
+The expanded manuscript's directory name does not certify IEEE/ACM formatting;
+the website labels it simply “Paper (PDF)”. Its authoring README records that venue
+formatting is deferred. The final paper mirror differs from the historical
+Submission 3 paper, which is preserved.
 
 ### Original and restyled slides
 

@@ -1,0 +1,3 @@
+# Published artefacts must remain byte-identical to their approved sources.
+*.pdf binary
+*.mp4 binary
